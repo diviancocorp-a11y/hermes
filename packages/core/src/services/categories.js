@@ -2,15 +2,9 @@
 // Dynamic category groups fetched from DB with local fallback.
 import { supabase } from '../lib/supabase';
 
-// Fallback (same as seed data) so the app works without DB
-const FALLBACK_GROUPS = [
-  { name: 'Primeros Mimos',         icon: '🫕', subcategories: ['Brusquetas', 'Escabeches', 'Aperitivos'], sort_order: 0 },
-  { name: 'La Mesa Principal',      icon: '🍕', subcategories: ['Rotisería', 'Pizzas'],                   sort_order: 1 },
-  { name: 'El Sanguche de la Nona', icon: '🥪', subcategories: ['Sandwiches'],                           sort_order: 2 },
-  { name: 'La Nona Amasó',          icon: '🥖', subcategories: ['Panadería', 'Panificados'],             sort_order: 3 },
-  { name: 'La Última Mordida',      icon: '🍰', subcategories: ['Tortas', 'torta', 'Budines', 'Alfajores'], sort_order: 4 },
-  { name: 'Cocina Consciente',      icon: '🥗', subcategories: ['Saludable'],                            sort_order: 5 },
-];
+// Fallback empty categories (client must provide via CatalogConfigContext).
+// Core is 100% client-agnostic; specific categories are injected by the business.
+const FALLBACK_GROUPS = [];
 
 /**
  * Fetch category groups from the database.

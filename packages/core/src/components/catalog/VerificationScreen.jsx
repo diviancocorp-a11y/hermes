@@ -39,8 +39,8 @@ export default function VerificationScreen({ paymentMethod, waitTimer }) {
       <h2 style={{ fontFamily: "'DM Serif Display',serif", fontSize: 20, marginBottom: 8, margin: "0 0 8px 0" }}>Verificando tu pedido...</h2>
       <p style={{ fontSize: 14, color: "var(--t3)", lineHeight: 1.6, maxWidth: 300, marginBottom: 20 }}>
         {isDigital
-          ? "La Nona está revisando tu comprobante de pago."
-          : "La Nona está confirmando tu pedido."}
+          ? "Tu comprobante está siendo revisado."
+          : "Tu pedido está siendo confirmado."}
       </p>
       <div style={{ marginTop: 0, width: "100%", maxWidth: 280 }}>
         <div style={{ background: "var(--b2)", borderRadius: 20, height: 8, overflow: "hidden" }}>

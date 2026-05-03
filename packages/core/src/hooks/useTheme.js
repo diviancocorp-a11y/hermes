@@ -2,7 +2,7 @@
 // Dark mode hook with localStorage persistence + prefers-color-scheme fallback.
 import { useState, useEffect, useCallback } from 'react';
 
-const STORAGE_KEY = 'lnp-theme';
+const STORAGE_KEY = 'hermes-theme';
 
 /**
  * Reads the user's stored or system theme preference.

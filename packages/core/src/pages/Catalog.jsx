@@ -5,6 +5,7 @@ import { preloadImages } from "../lib/preloadImages";
 import { fetchCatalog, submitOrder, validateCouponPublic } from "../lib/catalogService";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../contexts/AuthContext";
+import { useCatalogConfig } from "../contexts/index.js";
 import business, { waLink } from "../config/business";
 
 // ── Extracted components ──
@@ -28,6 +29,7 @@ import useFeature from "../hooks/useFeature";
 export default function Catalog() {
   const navigate = useNavigate();
   const { user, profile, addresses, isFavorite, toggleFavorite } = useAuth();
+  const config = useCatalogConfig();
 
   // --- Feature flags ---
   const ffGift = useFeature('GIFT_MODE');
@@ -484,7 +486,7 @@ export default function Catalog() {
     }
   };
 
-  // Sonido de pato al confirmar pedido
+  // Sonido de confirmación al confirmar pedido
   useEffect(() => {
     if (confirmAnim) {
       try { const a = new Audio(business.branding.sound); a.play().catch(() => {}); } catch {}
@@ -933,8 +935,8 @@ export default function Catalog() {
             <div className="ck-pay-detail">
               <div style={{fontSize:13,fontWeight:700,marginBottom:10}}>Pagá con MercadoPago</div>
               <div className="ck-bank-box">
-                <div className="ck-bank-row"><span style={{color:"var(--t3)",fontSize:12}}>Alias</span><span style={{fontWeight:700,fontSize:16}}>pato.jhs</span></div>
-                <button onClick={() => {navigator.clipboard.writeText("pato.jhs");}} className="ck-copy-btn">Copiar alias</button>
+                <div className="ck-bank-row"><span style={{color:"var(--t3)",fontSize:12}}>Alias</span><span style={{fontWeight:700,fontSize:16}}>{config.payments?.alias || 'cuenta.empresa'}</span></div>
+                <button onClick={() => {navigator.clipboard.writeText(config.payments?.alias || 'cuenta.empresa');}} className="ck-copy-btn">Copiar alias</button>
               </div>
               <div style={{fontSize:13,color:"var(--t2)",marginTop:12,fontWeight:700}}>Monto a pagar: <span style={{color:"var(--ac)"}}>${formatInt(ctWithDelivery)}</span></div>
 
@@ -1176,7 +1178,7 @@ export default function Catalog() {
               <div style={{ fontSize: 13, fontWeight: 700, color: "var(--t3)", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 10 }}>Preguntas frecuentes</div>
               {[
                 { q: "¿Cómo hago un pedido?", a: "Elegí los productos que quieras del catálogo, tocá el botón + para agregarlos, ajustá la cantidad y luego tocá \"Ver pedido\" para continuar con el checkout." },
-                { q: "¿Cuáles son los medios de pago?", a: "Aceptamos Efectivo (pagás al recibir), Transferencia bancaria (CBU: 0000003100000535412820) y MercadoPago (alias: pato.jhs). Para transferencia y MP, subí el comprobante en el checkout." },
+                { q: "¿Cuáles son los medios de pago?", a: `Aceptamos Efectivo (pagás al recibir), Transferencia bancaria y MercadoPago (alias: ${config.payments?.alias || 'cuenta.empresa'}). Para transferencia y MP, subí el comprobante en el checkout.` },
                 { q: "¿Hacen delivery?", a: "Sí, hacemos delivery. También podés retirar en nuestro local: Andrés Chazarreta 1435, Villa Rosa, Pilar, Buenos Aires." },
                 { q: "¿Puedo programar un pedido?", a: "Sí, en el checkout elegí \"Programar\" y seleccioná la fecha y hora. Ideal si querés tu pedido para otro día o si el local ya cerró." },
                 { q: "¿Cómo sé el estado de mi pedido?", a: "Al confirmar tu pedido recibís un código. Tocá \"Seguí tu pedido\" en el menú e ingresá el código para ver el estado en tiempo real." },

@@ -1,0 +1,68 @@
+{
+  "name": "@hermes/core",
+  "version": "0.1.0-alpha.0",
+  "description": "Core publicable del SaaS gastronómico Hermes (componentes, hooks, services, schemas)",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./components": "./src/components/index.js",
+    "./components/admin": "./src/components/admin/index.js",
+    "./components/catalog": "./src/components/catalog/index.js",
+    "./components/ui": "./src/components/ui/index.js",
+    "./services": "./src/services/index.js",
+    "./services/*": "./src/services/*.js",
+    "./hooks": "./src/hooks/index.js",
+    "./hooks/*": "./src/hooks/*.js",
+    "./lib": "./src/lib/index.js",
+    "./lib/*": "./src/lib/*.js",
+    "./contexts": "./src/contexts/index.js",
+    "./constants": "./src/constants/index.js",
+    "./config/defaults": "./src/config/defaults.js",
+    "./styles": "./src/styles/index.css",
+    "./supabase/migrations": "./supabase/migrations/"
+  },
+  "files": [
+    "src",
+    "supabase/migrations",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "echo 'No build step yet — distributing source ESM directly' && exit 0",
+    "test": "echo 'Tests TBD' && exit 0",
+    "lint": "eslint src/"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@supabase/supabase-js": "^2.0.0",
+    "@tanstack/react-query": "^5.0.0",
+    "react-router-dom": "^7.0.0",
+    "i18next": "^25.0.0",
+    "react-i18next": "^15.0.0"
+  },
+  "keywords": [
+    "saas",
+    "gastronomic",
+    "delivery",
+    "restaurant",
+    "supabase",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diviancocorp-a11y/hermes.git",
+    "directory": "packages/core"
+  },
+  "author": "diviancocorp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diviancocorp-a11y/hermes/issues"
+  },
+  "homepage": "https://github.com/diviancocorp-a11y/hermes#readme"
+}

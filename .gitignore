@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Test
+coverage/
+.nyc_output/
+
+# Env
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+Thumbs.db
+
+# npm/yarn
+.npm
+.yarn
+*.tgz
+
+# Output of npm pack
+*.tar

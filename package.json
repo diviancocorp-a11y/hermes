@@ -1,0 +1,29 @@
+{
+  "name": "hermes-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Matriz SaaS gastronómico - core publicable a npm + tooling para clientes",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@hermes/core",
+    "test": "npm run test --workspace=@hermes/core",
+    "lint": "npm run lint --workspace=@hermes/core",
+    "publish:core": "npm publish --workspace=@hermes/core --access=public",
+    "version:patch": "npm version patch --workspace=@hermes/core",
+    "version:minor": "npm version minor --workspace=@hermes/core",
+    "version:major": "npm version major --workspace=@hermes/core",
+    "create-client": "node scripts/create-client.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diviancocorp-a11y/hermes.git"
+  },
+  "author": "diviancocorp",
+  "license": "MIT"
+}
